@@ -1,0 +1,14 @@
+.sign-up_grid-wrapper {
+  flex: 0 0 700px;
+  text-align: center;
+}
+.sign-up_grid-wrapper .form__input-grid .form__input {
+  width: 50%;
+}
+.sign-up_grid-wrapper .sign-up-header {
+  color: #2d67a9;
+  margin: 0;
+}
+.sign-up_grid-wrapper .btn {
+  margin-top: 10px;
+}
