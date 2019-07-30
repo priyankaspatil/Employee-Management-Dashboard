@@ -6,7 +6,7 @@ import FloorMap from "../../assets/images/front-page-office-layout.jpg";
 import Login from "../Login/Login";
 import "./FloorMap.css";
 
-const MainScreen = () => {
+const MainScreen = (props) => {
     return (
       <Paper className="floor-map_paper-wrapper">
         <Grid className="floor-map_grid-wrapper">
@@ -17,7 +17,7 @@ const MainScreen = () => {
                       <img src={FloorMap} alt={FloorMap} />
                   </Grid>
               </Grid>
-              <Login />
+              <Login props={props}/>
               {/* <Register /> */}
           </Grid>
         </Grid>

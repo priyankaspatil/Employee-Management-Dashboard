@@ -13,8 +13,7 @@ class SignUp extends React.Component {
         lastname:'',
         email:'',
         username:'',
-        password:'',
-        redirectTo:''
+        password:''
       }
   }
 

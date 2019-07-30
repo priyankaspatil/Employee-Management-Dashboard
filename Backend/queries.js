@@ -61,9 +61,9 @@ const pool = new Pool({
   //Create a new user. [POST a new user] 
   const createUser = (request, response) => {
     console.log("Creating a new user!");
-    const { regid, firstname, lastname, email, username, password } = request.body
+    const { firstname, lastname, email, username, password } = request.body
   
-    pool.query('INSERT INTO register ( regid, firstname, lastname, email, username, password) VALUES ( $1, $2, $3, $4, $5, $6 )', [ regid, firstname, lastname, email, username, password ], (error, results) => {
+    pool.query('INSERT INTO register ( firstname, lastname, email, username, password) VALUES ( $1, $2, $3, $4, $5, $6 )', [ firstname, lastname, email, username, password ], (error, results) => {
       if (error) {
         throw error
       }
@@ -104,6 +104,6 @@ const pool = new Pool({
     getUsers,
     checkUser,
     createUser,
-    updateUser,
+    // updateUser,
     // deleteUser,
   }
