@@ -24,11 +24,17 @@ app.get('/', (request, response) => {
     response.json({ info: 'Node.js, Express, and Postgres API' })
 });
 
+// Employee(User) login/register api
 app.get('/users', db.getUsers);
 app.post('/users', db.checkUser);
 app.post('/register', db.createUser);
 // app.put('/users/update', db.updateUser);
 // app.delete('/users/:id', db.deleteUser);
+
+// Employee Details api
+app.post('/adduserdetails', db.addEmpDetails);
+app.delete('/deleteuserdetails', db.deleteEmpDetails);
+app.put('/updateuserdetails/:empId', db.updateEmpDetails);
 
 app.listen(port, () => {
     console.log(`App running on port ${port}.`)

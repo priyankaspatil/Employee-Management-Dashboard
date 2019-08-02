@@ -1,7 +1,7 @@
 import React from "react";
 // import { Redirect } from "react-router-dom";
 import { Button, Grid } from "@material-ui/core";
-import FormInput from "../../Components/FormInput";
+import FormInput from "../../Components/FormInput/FormInput";
 import PropTypes from 'prop-types';
 import { withRouter } from "react-router";
 import axios from "axios";
@@ -40,12 +40,12 @@ class Login extends React.Component {
       url: "http://localhost:3007/users",
       data: userDetails
     }).then(data => {
-      // console.log(data.data);
+      console.log("Axios login page===>",data);
       const result = data.data;
       { result === "Successful" ? this.props.props.history.push(ROUTES.HomePage) : console.log("Login Unsuccessful :(") }
       
     });
-    // debugger;
+    debugger;
   };
 
   onChange = event => {

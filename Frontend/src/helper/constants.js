@@ -1,6 +1,8 @@
 const LOGIN_ROUTES = {
     HomePage : "/home",
-    Register : "/signup"
+    Register : "/signup",
+    Login : "/",
+    AddUserDetails: "/adduserdetails"
 };
 
 export default LOGIN_ROUTES;

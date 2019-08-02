@@ -1,0 +1,15 @@
+.add-user-details_grid-wrapper {
+  flex: 0 0 700px;
+  text-align: center;
+  margin: 20px;
+}
+.add-user-details_grid-wrapper .form__input-grid .form__input {
+  width: 50%;
+}
+.add-user-details_grid-wrapper .add-user-details-header {
+  color: #2d67a9;
+  margin: 0;
+}
+.add-user-details_grid-wrapper .btn {
+  margin-top: 10px;
+}

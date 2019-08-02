@@ -5,6 +5,7 @@ import Login from './Screens/Login/Login';
 import SignUp from './Screens/Register/Register';
 import FloorMap from './Screens/MainScreen/FloorMap';
 import HomePage from './Screens/HomePage/Home';
+import UserDetails from './Components/UserDetails/AddUserDetails';
 import './index.css';
 
 const ViewPage = (props) => {
@@ -29,6 +30,11 @@ const ViewPage = (props) => {
         <Route
           path="/signup"
           render={routeProps => <SignUp {...routeProps} />}
+          exact
+        />
+        <Route
+          path="/adduserdetails"
+          render={routeProps => <UserDetails {...routeProps} />}
           exact
         />
         <Route

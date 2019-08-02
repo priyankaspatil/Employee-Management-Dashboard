@@ -1,8 +1,9 @@
 import React from "react";
 // import { Link, Redirect } from "react-router-dom";
 import { Button, Grid } from "@material-ui/core";
-import FormInput from "../../Components/FormInput";
+import FormInput from "../../Components/FormInput/FormInput";
 import axios from "axios";
+import ROUTES from '../../helper/constants';
 import "./Register.css";
 
 class SignUp extends React.Component {
@@ -35,7 +36,9 @@ class SignUp extends React.Component {
       url: "http://localhost:3007/register",
       data: newUser
     }).then(data => {
-      console.log("Data successfully registered====>",data);
+      const result = data.data;
+      { result === "Successful" ? this.props.props.history.push(ROUTES.UserDetails) : console.log("Registration failed :(") }
+      // console.log("Data successfully registered====>",data.data);
     });
     debugger;
   } 
