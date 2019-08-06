@@ -1,15 +1,35 @@
-.add-user-details_grid-wrapper {
+.add-user-grid-wrapper .add-user-details_grid-wrapper {
   flex: 0 0 700px;
   text-align: center;
   margin: 20px;
 }
-.add-user-details_grid-wrapper .form__input-grid .form__input {
-  width: 50%;
-}
-.add-user-details_grid-wrapper .add-user-details-header {
+.add-user-grid-wrapper .add-user-details_grid-wrapper .add-user-details-header {
   color: #2d67a9;
   margin: 0;
 }
-.add-user-details_grid-wrapper .btn {
-  margin-top: 10px;
+.add-user-grid-wrapper .add-user-details_grid-wrapper .add-user-details-forminput-grid {
+  display: flex;
+  align-items: center;
+}
+.add-user-grid-wrapper .add-user-details_grid-wrapper .add-user-details-forminput-grid .forminput-grid {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: 0 10px;
+}
+.add-user-grid-wrapper .add-user-details_grid-wrapper .add-user-details-forminput-grid .forminput-grid .form__input-grid {
+  margin: 10px;
+  width: 100%;
+}
+.add-user-grid-wrapper .add-user-details_grid-wrapper .add-user-details-forminput-grid .forminput-grid .form__input-grid .form__input {
+  width: 100%;
+}
+.add-user-grid-wrapper .add-user-details_grid-wrapper .alert-model-dialog_grid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.add-user-grid-wrapper .add-user-details_grid-wrapper .alert-model-dialog_grid .btn {
+  margin: 10px;
 }

@@ -137,7 +137,7 @@ const updateEmpDetails = (request, response) => {
 
   pool.query( query, values)
   .then(res => {
-    response.status(201).send(`Successfully ${empId} details updated`)
+    response.status(201).send(`Successfully ${id} details updated`)
   })
   .catch(e => console.error(e.stack))
 }

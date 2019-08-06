@@ -1,0 +1,139 @@
+// main: ../../main.less
+
+
+.aside-menu {
+  position: absolute;
+  background-color: transparent;
+  left: 0px;
+  top: 0px;
+  width: 85px;
+  margin-top: 90px !important;
+  border: none;
+  height: ~'calc(100% - 90px) !important';
+
+  .vertical.menu {
+    width: 100%;
+  }
+}
+
+.fi-aside-left--fixed {
+  .fi-aside-left {
+    > div {
+      .box-shadow(3px 5px 20px -3px rgba(0, 0, 0, 0.14));
+      background-color: @accent-white;
+    }
+
+  }
+}
+
+.main-navigation__container {
+  ul.main-navigation__ul {
+    padding: 0;
+
+    .main-nav--icon__wrapper {
+      min-width: 2rem;
+      min-height: 2rem;
+      margin-left: 7px;
+
+      svg {
+        width: 1.8rem;
+        height: 1.8rem;
+      }
+    }
+
+    div.selected-main__nav {
+      color: @brand-primary;
+      background-color: @tag-bg-info;
+
+      svg {
+        color: @brand-primary;
+      }
+    }
+
+    .main-navigation-with-submenu__li {
+      position: relative;
+      display: block;
+      cursor: pointer;
+      padding: 0;
+
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.08);
+      }
+
+      .main-nav-with-submenu_content {
+        padding: 11px 16px 9px;
+
+        .collapse-icon__container {
+          .flex-align-items(center);
+          .flexbox();
+
+          svg {
+            width: 1em;
+            height: 1em;
+            font-size: 24px;
+            color: rgba(0, 0, 0, 0.54);
+            margin-top: -6px;
+          }
+        }
+      }
+
+      .submenu-content_wrapper {
+        background-color: @accent-white;
+
+        .sub-navigation__ul {
+          padding: 0 0 0 0px;
+
+          .sub-navigation__li {
+            padding: 7px 16px 5px 21px;
+
+            div:nth-child(2) {
+              padding: 0 11px 0 10px;
+            }
+          }
+        }
+      }
+
+      &.selected-main__nav {
+        color: @brand-primary;
+        background-color: transparent;
+
+        .main-nav-with-submenu_content {
+          background-color: @tag-bg-info;
+        }
+
+        svg {
+          color: @brand-primary;
+        }
+
+        .submenu-content_wrapper {
+          .sub-navigation__ul {
+            .sub-navigation__li {
+              background-color: transparent;
+
+              svg {
+                color: rgba(0, 0, 0, 0.54);
+              }
+
+              &.selected-main__nav {
+                background-color: @tag-bg-info;
+
+                svg {
+                  color: @brand-primary;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.main-nav-link__container {
+  .main-nav-link {
+    img.main-nav-img__link {
+      width: 1.45rem;
+      height: 1.45rem;
+    }
+  }
+}
