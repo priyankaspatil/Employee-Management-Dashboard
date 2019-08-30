@@ -13,13 +13,13 @@ const pool = new Pool({
   //GET all users
   const getUsers = (request, response) => {
     console.log("This is the getUsers function call");
-    const query = 'SELECT * FROM register ORDER BY regid ASC';
+    const query = 'SELECT * FROM register';
   
     pool.query(query, (error, results) => {
       if (error) {
         throw error
       }
-      response.status(200).send("Success")
+      response.status(200).send("Success");
     })
   }
 

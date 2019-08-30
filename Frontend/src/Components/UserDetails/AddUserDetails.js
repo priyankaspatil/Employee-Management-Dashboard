@@ -31,7 +31,7 @@ class UserDeatails extends React.Component {
     history: PropTypes.object.isRequired
   };
 
-  onSave = () => {
+  onSave = async () => {
     const { empName, empId, empDeskNo, empProject, empCostCenter, empUnit, empBand, empImmRepManager, empRepManager, empFunctionHead} = this.state;
     const AddUserDetails = {
       empName,
@@ -49,15 +49,18 @@ class UserDeatails extends React.Component {
     // console.log("In UserDeatails ===>", AddUserDetails);
     // console.log("In state ===>", this.state);
     // console.log("AddUserDetails props======>",this.props)
-    axios({
-      method: "POST",
-      url: "http://localhost:3007/adduserdetails",
-      data: AddUserDetails
-    }).then(data => {
-      const result = data.data;
-      { result === "Successful" ? this.props.history.push(ROUTES.HomePage) : console.log("Failed to add user details :(") }
-      // console.log("Data successfully registered====>",data.data);
-    });
+    let res = await axios.post("http://localhost:3007/adduserdetails", AddUserDetails);
+    let { data } = res.data;
+    console.log(data)
+    // axios({
+    //   method: "POST",
+    //   url: "http://localhost:3007/adduserdetails",
+    //   data: AddUserDetails
+    // }).then(data => {
+    //   const result = data.data;
+    //   { result === "Successful" ? this.props.history.push(ROUTES.HomePage) : console.log("Failed to add user details :(") }
+    //   // console.log("Data successfully registered====>",data.data);
+    // });
     // debugger;
   } 
 
