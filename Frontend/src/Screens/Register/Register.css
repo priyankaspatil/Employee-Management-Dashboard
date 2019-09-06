@@ -2,13 +2,15 @@
   flex: 0 0 700px;
   text-align: center;
 }
-.sign-up_grid-wrapper .form__input-grid .form__input {
-  width: 50%;
+.sign-up_grid-wrapper .input-field_grid {
+  flex: 1 0 auto;
 }
-.sign-up_grid-wrapper .sign-up-header {
-  color: #2d67a9;
-  margin: 0;
+.sign-up_grid-wrapper .input-field_grid .input-field {
+  width: 100%;
+  margin-bottom: 15px;
 }
 .sign-up_grid-wrapper .btn {
-  margin-top: 10px;
+  width: 75%;
+  padding: 1rem 3rem;
+  border-radius: 35px;
 }

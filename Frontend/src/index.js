@@ -6,6 +6,7 @@ import SignUp from './Screens/Register/Register';
 import FloorMap from './Screens/MainScreen/FloorMap';
 import HomePage from './Screens/HomePage/Home';
 import UserDetails from './Components/UserDetails/AddUserDetails';
+// import MainScreen from './Screens/MainScreen/MainScreen';
 import './index.css';
 
 const ViewPage = (props) => {

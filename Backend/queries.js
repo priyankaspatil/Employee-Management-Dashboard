@@ -9,7 +9,7 @@ const pool = new Pool({
 
 
 // USER AUTHENTICATION QUERIES
-
+// (register table)
   //GET all users
   const getUsers = (request, response) => {
     console.log("This is the getUsers function call");
@@ -76,38 +76,43 @@ const pool = new Pool({
   }
 
   //Update the user details. [PUT updated data in an existing user]
-  // const updateUser = (request, response) => {
-  //   // const id = parseInt(request.params.id)
-  //   console.log("Updating the user details!");
-  //   const { firstname, lastname, email, username, password } = request.body
-  //   const query = 'UPDATE register SET firstname = $1, lastname = $2, email = $3, username = $4, password = $5 WHERE email = $3'
-  //   const values = [firstname, lastname, email, username, password]
+  const updateUser = (request, response) => {
+    // const id = parseInt(request.params.id)
+    const username = request.params.username
+    console.log("Updating the user details!");
+    const { firstname, lastname, email, password } = request.body
+    const query = 'UPDATE register SET firstname = $1, lastname = $2, email = $3, password = $4 WHERE username = $5'
+    const values = [firstname, lastname, email, password, username]
   
-  //   pool.query( query, values, (error, results) => {
-  //       if (error) {
-  //         throw error
-  //       }
-  //       response.status(200).send(`User modified with email: ${email}`)
-  //     }
-  //   )
-  // }
+    pool.query( query, values, (error, results) => {
+        if (error) {
+          throw error
+        }
+        response.status(200).send(`User modified with username: ${username}`)
+      }
+    )
+  }
 
   //DELETE a user
-//   const deleteUser = (request, response) => {
-//     const id = parseInt(request.params.id)
-  
-//     pool.query('DELETE FROM users WHERE id = $1', [id], (error, results) => {
-//       if (error) {
-//         throw error
-//       }
-//       response.status(200).send(`User deleted with ID: ${id}`)
-//     })
-//   }
+  const deleteUser = (request, response) => {
+    const {username} = request.body
+    console.log(`Deleting the user ${username}`)
+    // const { firstname, lastname, email, password } = request.body
+    const query = 'DELETE FROM register WHERE username = $1'
+    const values = [ username]
+
+    pool.query(query, values, (error, results) => {
+      if (error) {
+        throw error
+      }
+      response.status(200).send(`User deleted with username: ${username}`)
+    })
+  }
 
 
 // EMPLOYEE DETAILS QUERIES
 
-//Add Employee details 
+//Add Employee details (empdetails table)
 const addEmpDetails = (request, response) => {
   console.log("Adding employee details");
   const { empName, empId, empDeskNo, empProject, empCostCenter, empUnit, empBand, empImmRepManager, empRepManager, empFunctionHead } = request.body
@@ -169,8 +174,8 @@ const updateEmpDetails = (request, response) => {
     getUsers,
     checkUser,
     createUser,
-    // updateUser,
-    // deleteUser,
+    updateUser,
+    deleteUser,
     addEmpDetails,
     deleteEmpDetails,
     updateEmpDetails

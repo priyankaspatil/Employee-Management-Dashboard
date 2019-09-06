@@ -2,13 +2,38 @@
   flex: 0 0 700px;
   text-align: center;
 }
-.login-container_wrapper .login-header {
-  color: #2d67a9;
-  margin: 0;
+.login-container_wrapper .input-field_grid {
+  flex: 1 0 auto;
+  width: 100%;
 }
-.login-container_wrapper .form__input-grid .form__input {
-  width: 50%;
+.login-container_wrapper .input-field_grid .username-grid {
+  display: flex;
+  flex-wrap: wrap;
 }
-.login-container_wrapper .btn {
-  margin-top: 10px;
+.login-container_wrapper .input-field_grid .username-grid .input-field {
+  width: 100%;
+  margin-bottom: 15px;
+}
+.login-container_wrapper .input-field_grid .username-grid .err__text {
+  color: red;
+}
+.login-container_wrapper .input-field_grid .password-grid {
+  display: flex;
+  flex-wrap: wrap;
+}
+.login-container_wrapper .input-field_grid .password-grid .input-field {
+  width: 100%;
+  margin-bottom: 15px;
+}
+.login-container_wrapper .input-field_grid .password-grid .err__text {
+  color: red;
+}
+.login-container_wrapper .input-field_grid .login__btn-grid .btn {
+  width: 75%;
+  padding: 1rem 3rem;
+  border-radius: 35px;
+  background-color: #4194F2;
+}
+.login-container_wrapper .input-field_grid .login__btn-grid .btn:hover {
+  background-color: #2d67a9;
 }

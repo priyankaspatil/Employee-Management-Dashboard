@@ -2,14 +2,19 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
     justify-content: center;
-    padding: 20px;
-    min-height: 800px;
+    margin: 20px;
+    min-height: 810px;
     .floor-map_grid-wrapper{
         width: 100%;
         display: flex;
         flex-direction: column;
+        z-index: 1;
+        background-image: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12);
+        .floor-map_img{
+            height: 810px;
+            opacity: 0.5;
+        }
         .floor-map_title {
             width: 100%;
             text-align: center;

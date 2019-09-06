@@ -1,7 +1,7 @@
 import React from "react";
 // import { Link, Redirect } from "react-router-dom";
-import { Button, Grid } from "@material-ui/core";
-import FormInput from "../../Components/FormInput/FormInput";
+import { Button, Grid, TextField } from "@material-ui/core";
+// import FormInput from "../../Components/FormInput/FormInput";
 import axios from "axios";
 import ROUTES from '../../helper/constants';
 import "./Register.css";
@@ -18,7 +18,7 @@ class SignUp extends React.Component {
       }
   }
 
-  signUp = () => {
+  signUp = async () => {
     const { firstname, lastname, email, username, password } = this.state;
     const newUser = {
       firstname,
@@ -27,19 +27,21 @@ class SignUp extends React.Component {
       username,
       password
     };
-    // this.props.AddNewUser(newUser);
-    // this.setState({ redirectTo: "/signup" });
-    debugger;
+    
+    let res = await axios.post("http://localhost:3007/register", newUser);
+    let data  = res.data;
 
-    axios({
-      method: "POST",
-      url: "http://localhost:3007/register",
-      data: newUser
-    }).then(data => {
-      const result = data.data;
-      { result === "Successful" ? this.props.props.history.push(ROUTES.UserDetails) : console.log("Registration failed :(") }
-      // console.log("Data successfully registered====>",data.data);
-    });
+    { data === "Successful" ? this.props.history.push(ROUTES.HomePage) : alert("Registration Unsuccessful.") }
+
+    // axios({
+    //   method: "POST",
+    //   url: "http://localhost:3007/register",
+    //   data: newUser
+    // }).then(data => {
+    //   const result = data.data;
+    //   { result === "Successful" ? this.props.history.push(ROUTES.UserDetails) : console.log("Registration failed :(") }
+    //   // console.log("Data successfully registered====>",data.data);
+    // });
     debugger;
   } 
 
@@ -50,20 +52,21 @@ class SignUp extends React.Component {
   };
 
   render() {
-    // if (this.state.redirectTo) {
-    //   return <Redirect to={this.state.redirectTo} push />;
-    // }
     return (
-      <Grid className="sign-up_grid-wrapper">
-        <h2 className="sign-up-header">SIGN UP</h2>
-        <FormInput label="Firstname" name="firstname" type="text" onChange={this.onChange} placeholder="Enter Firstname"/>
-        <FormInput label="Lastname" name="lastname" type="text" onChange={this.onChange} placeholder="Enter Lastname"/>
-        <FormInput label="Email" name="email" type="email" onChange={this.onChange} placeholder="Enter Email"/>
-        <FormInput label="Username" name="username" type="text" onChange={this.onChange} placeholder="Enter Username"/>
-        <FormInput label="Password" name="password" type="password" onChange={this.onChange} placeholder="Enter Password"/>
-        <Button variant="contained" color="primary" onClick={this.signUp} className="btn">
-          Sign Up
-        </Button>
+      <Grid container className="sign-up_grid-wrapper">
+        {/* <h2 className="sign-up-header">SIGN UP</h2> */}
+        <Grid item xs className="input-field_grid">
+          <TextField className="input-field" label="Firstname" name="firstname" type="text" onChange={this.onChange} placeholder="Enter Firstname"/>
+          <TextField className="input-field" label="Lastname" name="lastname" type="text" onChange={this.onChange} placeholder="Enter Lastname"/>
+          <TextField className="input-field" label="Email" name="email" type="email" onChange={this.onChange} placeholder="Enter Email"/>
+          <TextField className="input-field" label="Username" name="username" type="text" onChange={this.onChange} placeholder="Enter Username"/>
+          <TextField className="input-field" label="Password" name="password" type="password" onChange={this.onChange} placeholder="Enter Password"/>
+        </Grid>
+        <Grid item xs className="sign-up-btn_grid">
+          <Button variant="contained" color="primary" onClick={this.signUp} className="btn">
+            Sign Up
+          </Button>
+        </Grid>
       </Grid>
     );
   }

@@ -14,7 +14,8 @@ class Login extends React.Component {
   state = {
     username: "",
     password:"",
-    errorMsg: '',
+    usernameErrorMsg: '',
+    passwordErrorMsg: '',
     value: '',
     showUsernameError: false,
     showPasswordError: false,
@@ -35,11 +36,14 @@ class Login extends React.Component {
     };
     // this.props.Check(userDetails);
     console.log(userDetails);
+    console.log("Login props==========>", this.props)
 
     let res = await axios.post("http://localhost:3007/users", userDetails);
-    let { data } = res.data;
-    console.log("Login data ===>",data)
-
+    // console.log('Login res==>', res);
+    let data  = res.data;
+    // console.log("Login data ===>",data)
+    { data === "Successful" ? this.props.history.push(ROUTES.HomePage) : console.log("Login Unsuccessful :(") }
+    debugger;
     // axios({
     //   method: "POST",
     //   url: "http://localhost:3007/users",
@@ -47,10 +51,9 @@ class Login extends React.Component {
     // }).then(data => {
     //   console.log("Axios login page===>",data);
     //   const result = data.data;
-    //   { result === "Successful" ? this.props.props.history.push(ROUTES.HomePage) : console.log("Login Unsuccessful :(") }
+    //   { result === "Successful" ? this.props.history.push(ROUTES.HomePage) : console.log("Login Unsuccessful :(") }
       
     // });
-    debugger;
   };
 
   // onChange = event => {
@@ -70,23 +73,23 @@ class Login extends React.Component {
       if (regx.test(value) === false) {
         this.setState({
             showUsernameError: true,
-            errorMsg: 'Please add a valid username'
+            usernameErrorMsg: 'Please add a valid username'
         })
       } else if (value.length < 3 || value.length > 16) {
         this.setState({
             showUsernameError: true,
-            errorMsg: "The username has to be greater than 3 and less than 16 characters."
+            usernameErrorMsg: "The username has to be greater than 3 and less than 16 characters."
         })
-      }else if (value === '') {
+      }else if (value === null ) {
         this.setState({
             showUsernameError: false,
-            errorMsg: value
+            usernameErrorMsg: value
         })
       }
       else {
         this.setState({
             showUsernameError: false,
-            errorMsg: 'value'
+            usernameErrorMsg: 'value'
         })
       }
   }
@@ -102,18 +105,23 @@ class Login extends React.Component {
       if (regx.test(value) === false) {
         this.setState({
             showPasswordError: true,
-            errorMsg: 'The password is not valid'
+            passwordErrorMsg: 'The password is not valid'
         })
       } else if (value.length < 9) {
         this.setState({
             showPasswordError: true,
-            errorMsg: "The password length can't be greater than 9 characters"
+            passwordErrorMsg: "The password length can't be less than 9 characters"
+        })
+      }else if (value === null ) {
+        this.setState({
+            showUsernameError: false,
+            passwordErrorMsg: value
         })
       }
       else {
         this.setState({
             showPasswordError: false,
-            errorMsg: 'value'
+            passwordErrorMsg: 'value'
         })
       }
   }
@@ -127,46 +135,54 @@ class Login extends React.Component {
 
     console.log("These are props==========>",this.props);
     return (
-        <Grid className="login-container_wrapper">
-          <h2 className="login-header">LOGIN</h2>
-          <Grid item className="username-grid">
-            <TextField 
-              label="Username" 
-              name="username" 
-              type="text" 
-              onChange={this.validateUsername} 
-              placeholder="Enter Username"
+        <Grid container className="login-container_wrapper">
+          {/* <h2 className="login-header">LOGIN</h2> */}
+          <Grid item xs className="input-field_grid">
+            <Grid item xs className="username-grid">
+              <TextField 
+                  label="Username" 
+                  name="username" 
+                  type="text" 
+                  id="standard-name"
+                  onChange={this.validateUsername} 
+                  className="input-field"
+                  placeholder="Enter Username"
+                  inputProps={{
+                    maxLength: 16,
+                    min: 3
+                  }}
+                  />
+                  {this.state.showUsernameError ?
+                    <div className="err__text">
+                        {this.state.usernameErrorMsg}
+                    </div> : null}
+            </Grid>
+            <Grid item xs className="password-grid">
+              <TextField 
+              label="Password" 
+              name="password" 
+              type="password" 
+              id="standard-password-input"
+              className="input-field"
+              // onChange={this.onChange} 
+              placeholder="Enter Password" 
+              onChange={this.validatePassword}
               inputProps={{
-                maxLength: 16,
-                min: 3
+                maxLength: 9,
+                min: 0
               }}
               />
-              {this.state.showUsernameError ?
-                <div className="err__text" style={{color: 'red'}}>
-                    {this.state.errorMsg}
+              {this.state.showPasswordError ?
+                <div className="err__text">
+                    {this.state.passwordErrorMsg}
                 </div> : null}
+              </Grid>
           </Grid>
-          <Grid item className="password-grid">
-            <TextField 
-            label="Password" 
-            name="password" 
-            type="password" 
-            // onChange={this.onChange} 
-            placeholder="Enter Password" 
-            onChange={this.validatePassword}
-            inputProps={{
-              maxLength: 9,
-              min: 0
-            }}
-            />
-            {this.state.showPasswordError ?
-              <div className="err__text" style={{color: 'red'}}>
-                  {this.state.errorMsg}
-              </div> : null}
+          <Grid item xs className="login__btn-grid">
+            <Button variant="contained" color="primary" className="btn" onClick={this.checkUser}>
+              Submit
+            </Button>
           </Grid>
-          <Button variant="contained" color="primary" className="btn" onClick={this.checkUser}>
-            Submit
-          </Button>
         </Grid>
     );
   }
