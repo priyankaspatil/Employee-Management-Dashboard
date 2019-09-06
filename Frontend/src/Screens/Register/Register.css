@@ -9,8 +9,12 @@
   width: 100%;
   margin-bottom: 15px;
 }
-.sign-up_grid-wrapper .btn {
+.sign-up_grid-wrapper .sign-up-btn_grid .btn {
   width: 75%;
   padding: 1rem 3rem;
   border-radius: 35px;
+  background-color: #008793;
+}
+.sign-up_grid-wrapper .sign-up-btn_grid .btn:hover {
+  background-color: #26696f;
 }

@@ -44,13 +44,13 @@ function a11yProps(index) {
 const useStyles = makeStyles(theme => ({
   root: {
     backgroundColor: theme.palette.background.paper,
-    width: 500,
+    width: 400,
     height: 455,
     right: 200,
-    top: 192,
+    top: 225,
     position: 'absolute',
-    borderRadius: 10,
-    boxShadow: '0px 3px 5px -1px rgba(0,0,0,0.2), 0px 6px 10px 0px rgba(0,0,0,0.14), 0px 1px 18px 0px rgba(0,0,0,0.12)'
+    // borderRadius: 10,
+    boxShadow: '-13px 16px 12px -1px rgba(0,0,0,0.75)'
   },
   appbar: {
     borderRadius: '10px 10px 0 0'

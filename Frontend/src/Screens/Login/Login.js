@@ -179,8 +179,8 @@ class Login extends React.Component {
               </Grid>
           </Grid>
           <Grid item xs className="login__btn-grid">
-            <Button variant="contained" color="primary" className="btn" onClick={this.checkUser}>
-              Submit
+            <Button variant="contained" color="primary" onClick={this.checkUser} className="btn">
+              Login
             </Button>
           </Grid>
         </Grid>
