@@ -17,6 +17,7 @@
 .floor-map_paper-wrapper .floor-map_grid-wrapper .floor-map_img {
   height: 895px;
   opacity: 0.5;
+  width: 100%;
 }
 .floor-map_paper-wrapper .floor-map_grid-wrapper .floor-map_title {
   width: 100%;
@@ -24,9 +25,11 @@
   color: darkblue;
 }
 .floor-map_paper-wrapper .floor-map_grid-wrapper .floor-map_grid-container {
-  width: 100%;
   display: flex;
   justify-content: center;
+  position: absolute;
+  top: 175px;
+  right: 225px;
 }
 .floor-map_paper-wrapper .floor-map_grid-wrapper .floor-map_grid-container .floor-map_grid {
   display: flex;

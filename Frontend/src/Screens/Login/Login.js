@@ -110,7 +110,7 @@ class Login extends React.Component {
       } else if (value.length < 9) {
         this.setState({
             showPasswordError: true,
-            passwordErrorMsg: "The password length can't be less than 9 characters"
+            passwordErrorMsg: "Minimun 9 characters required"
         })
       }else if (value === null ) {
         this.setState({

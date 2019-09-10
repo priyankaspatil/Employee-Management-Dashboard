@@ -46,8 +46,8 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: theme.palette.background.paper,
     width: 400,
     height: 455,
-    right: 200,
-    top: 225,
+    right: 70,
+    top: 70,
     position: 'absolute',
     // borderRadius: 10,
     boxShadow: '-13px 16px 12px -1px rgba(0,0,0,0.75)'

@@ -1,10 +1,13 @@
+.add-user-grid-wrapper {
+  width: 545px;
+}
 .add-user-grid-wrapper .add-user-details_grid-wrapper {
   flex: 0 0 700px;
   text-align: center;
   margin: 20px;
 }
 .add-user-grid-wrapper .add-user-details_grid-wrapper .add-user-details-header {
-  color: #2d67a9;
+  color: #008793;
   margin: 0;
 }
 .add-user-grid-wrapper .add-user-details_grid-wrapper .add-user-details-forminput-grid {
@@ -19,7 +22,7 @@
   margin: 0 10px;
 }
 .add-user-grid-wrapper .add-user-details_grid-wrapper .add-user-details-forminput-grid .forminput-grid .form__input-grid {
-  margin: 10px;
+  margin: 0 10px;
   width: 100%;
 }
 .add-user-grid-wrapper .add-user-details_grid-wrapper .add-user-details-forminput-grid .forminput-grid .form__input-grid .form__input {
@@ -29,7 +32,21 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: 10px;
 }
 .add-user-grid-wrapper .add-user-details_grid-wrapper .alert-model-dialog_grid .btn {
-  margin: 10px;
+  padding: 0.5rem 3rem;
+  border-radius: 35px;
+  background-color: #008793;
+  margin-right: 15px;
+}
+.add-user-grid-wrapper .add-user-details_grid-wrapper .alert-model-dialog_grid .btn:hover {
+  background-color: #26696f;
+}
+.add-user-grid-wrapper .add-user-details_grid-wrapper .alert-model-dialog_grid .sec__btn {
+  border-radius: 35px;
+  padding: 0.5rem 2.5rem;
+}
+.add-user-grid-wrapper .add-user-details_grid-wrapper .alert-model-dialog_grid .sec__btn span {
+  color: #008793;
 }

@@ -1,10 +1,11 @@
 import React from 'react';
-import Button from '@material-ui/core/Button';
+import {Button, Grid} from '@material-ui/core';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 // import DialogTitle from '@material-ui/core/DialogTitle';
+import './AlertModalDialog.css';
 
 export default function AlertDialog() {
   const [open, setOpen] = React.useState(false);
@@ -18,8 +19,8 @@ export default function AlertDialog() {
   }
 
   return (
-    <div>
-      <Button variant="outlined" color="primary" onClick={handleClickOpen}>
+    <Grid className="alert_popup-grid">
+      <Button color="primary" onClick={handleClickOpen} className="sec__btn">
         Cancel
       </Button>
       <Dialog
@@ -27,22 +28,23 @@ export default function AlertDialog() {
         onClose={handleClose}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
+        className="alert-dialog"
       >
         {/* <DialogTitle id="alert-dialog-title">{"Use Google's location service?"}</DialogTitle> */}
-        <DialogContent>
-          <DialogContentText id="alert-dialog-description">
-            Once you cancel, your employee details won't be saved. Due to which you won't be able to be mapped on Floor Map of company.
+        <DialogContent className="alert-dialog_content">
+          <DialogContentText id="alert-dialog-description" className="alert-dialog_content-description">
+            Once you cancel, your employee details won't be saved. Due to which you won't be able to be mapped on company Floor Map. Are you sure you want cancel ?
           </DialogContentText>
         </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose} color="primary">
-            Yes
-          </Button>
-          <Button onClick={handleClose} color="primary" autoFocus>
+        <DialogActions className="alert-dialog_actions">
+          <Button onClick={handleClose} className="sec__btn">
             No
+          </Button>
+          <Button onClick={handleClose} autoFocus className="btn">
+            Yes
           </Button>
         </DialogActions>
       </Dialog>
-    </div>
+    </Grid>
   );
 }

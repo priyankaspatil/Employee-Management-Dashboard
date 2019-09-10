@@ -1,11 +1,12 @@
 .add-user-grid-wrapper{
+    width: 545px;
     .add-user-details_grid-wrapper{
         flex: 0 0 700px;
         text-align: center;
         margin: 20px;
         
         .add-user-details-header{
-            color: rgb(45, 103, 169);
+            color: #008793;
             margin: 0;
         }
         .add-user-details-forminput-grid{
@@ -18,7 +19,7 @@
                 flex-direction: column;
                 margin: 0 10px;
                 .form__input-grid{
-                    margin: 10px;
+                    margin: 0 10px;
                     width: 100%;
                     .form__input{
                         width: 100%;
@@ -30,9 +31,40 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            margin-top: 10px;
             .btn{
-                margin: 10px;
+                padding: 0.5rem 3rem;
+                border-radius: 35px;
+                background-color: #008793;
+                margin-right: 15px;
+                &:hover{
+                    background-color: #26696f;
+                }
             }
+            .sec__btn{
+                border-radius: 35px;
+                padding: 0.5rem 2.5rem;
+                span{
+                    color: #008793;
+                }
+            }
+            // .alert-dialog{
+            //     div{
+            //         .alert-dialog_content{
+            //             .alert-dialog_content-description{
+            //                 margin: 16px 0;
+            //             }
+            //         }
+            //         .alert-dialog_actions{
+            //             .sec__btn{
+    
+            //             }
+            //             .btn{
+    
+            //             }
+            //         }
+            //     }
+            // }
         }
     }
 }

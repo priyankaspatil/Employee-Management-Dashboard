@@ -1,0 +1,31 @@
+.sec__btn {
+  border-radius: 35px;
+  padding: 0.5rem 2.5rem;
+}
+.sec__btn span {
+  color: #008793;
+}
+.alert-dialog div .alert-dialog_content {
+  padding: 8px 24px 0;
+}
+.alert-dialog div .alert-dialog_content .alert-dialog_content-description {
+  font-size: 17px;
+  margin: 16px 0;
+}
+.alert-dialog div .alert-dialog_actions .sec__btn {
+  border-radius: 35px;
+  padding: 0.5rem 1.5rem;
+}
+.alert-dialog div .alert-dialog_actions .sec__btn span {
+  color: #008793;
+}
+.alert-dialog div .alert-dialog_actions .btn {
+  padding: 0.5rem 1.5rem;
+  border-radius: 35px;
+  background-color: #008793;
+  margin-right: 15px;
+  color: #ffffff;
+}
+.alert-dialog div .alert-dialog_actions .btn:hover {
+  background-color: #26696f;
+}

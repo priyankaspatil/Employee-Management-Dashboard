@@ -14,7 +14,8 @@ class SignUp extends React.Component {
         lastname:'',
         email:'',
         username:'',
-        password:''
+        password:'',
+        showAddEmpDetails: false
       }
   }
 
@@ -31,8 +32,11 @@ class SignUp extends React.Component {
     let res = await axios.post("http://localhost:3007/register", newUser);
     let data  = res.data;
 
-    { data === "Successful" ? this.props.history.push(ROUTES.HomePage) : alert("Registration Unsuccessful.") }
-
+    { data === "Successful" ? this.setState({showAddEmpDetails: true}) : alert("Registration Unsuccessful.") }
+    console.log("Register showAddEmpDetails state=====>", this.state.showAddEmpDetails) 
+    console.log("Register props========>",this.props.props.showAddDetailsComp)
+    this.props.props.showAddDetailsComp(this.state.showAddEmpDetails);
+    // this.props.history.push(ROUTES.HomePage) && 
     // axios({
     //   method: "POST",
     //   url: "http://localhost:3007/register",

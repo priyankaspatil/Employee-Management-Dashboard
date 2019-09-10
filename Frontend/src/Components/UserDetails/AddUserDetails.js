@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Grid } from "@material-ui/core";
+import { Button, Grid, Paper } from "@material-ui/core";
 import FormInput from "../FormInput/FormInput";
 import PropTypes from 'prop-types';
 import { withRouter } from "react-router";
@@ -76,7 +76,7 @@ class UserDeatails extends React.Component {
 
   render() {
     return (
-      <Grid container className="add-user-grid-wrapper">
+      <Paper container className="add-user-grid-wrapper">
         <Grid className="add-user-details_grid-wrapper">
           <h2 className="add-user-details-header">Add Your Employee Details</h2>
           <Grid className="add-user-details-forminput-grid">
@@ -90,7 +90,7 @@ class UserDeatails extends React.Component {
             <Grid className="forminput-grid">
               <FormInput label="Unit" name="empUnit" type="text" onChange={this.onChange} placeholder="Enter Employee Unit"/>
               <FormInput label="Band" name="empBand" type="text" onChange={this.onChange} placeholder="Enter Employee Band"/>
-              <FormInput label="Immediate Reporting Manager" name="empImmRepManager" type="text" onChange={this.onChange} placeholder="Enter Immediate Reporting Manager"/>
+              <FormInput label="Immediate Reporting Manager" name="empImmRepManager" type="text" onChange={this.onChange} placeholder="Immediate Reporting Manager"/>
               <FormInput label="Reporting Manager" name="empRepManager" type="text" onChange={this.onChange} placeholder="Enter Reporting Manager"/>
               <FormInput label="Function Head" name="empFunctionHead" type="text" onChange={this.onChange} placeholder="Enter Function Head"/>
             </Grid>
@@ -105,7 +105,7 @@ class UserDeatails extends React.Component {
             <Alert /> 
           </Grid>
         </Grid>
-      </Grid>
+      </Paper>
     );
   }
 }
