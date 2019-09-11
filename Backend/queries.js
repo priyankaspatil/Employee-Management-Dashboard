@@ -95,17 +95,26 @@ const pool = new Pool({
 
   //DELETE a user
   const deleteUser = (request, response) => {
-    const {username} = request.body
-    console.log(`Deleting the user ${username}`)
+    const {email} = request.body
+    console.log(`Deleting the user ${email}`)
     // const { firstname, lastname, email, password } = request.body
-    const query = 'DELETE FROM register WHERE username = $1'
-    const values = [ username]
+    const query = 'DELETE FROM register WHERE email = $1'
+    const values = [ email]
 
-    pool.query(query, values, (error, results) => {
-      if (error) {
-        throw error
+    pool.query(query, values)
+    .then(results => {
+      // console.log("Delete results==>", results)
+      if(results.rowCount == 1){
+        response.status(200).send(`User deleted with email: ${email}`)
       }
-      response.status(200).send(`User deleted with username: ${username}`)
+      else{
+        response.status(404).send(`${email} user dose not exist`)
+      }
+      
+    })
+    .catch(e => {
+      console.error(e.stack)
+      response.send("Failed")
     })
   }
 

@@ -30,7 +30,7 @@ render(){
         <Grid container className="floor-map_grid-wrapper">
           <img src={FloorMapImg} alt={FloorMapImg} className="floor-map_img"/>
           <Grid item xs className="floor-map_grid-container">
-             <AddUserDetails/> 
+             <AddUserDetails props={this.props}/> 
           </Grid>
         </Grid> :
         <Grid container className="floor-map_grid-wrapper">

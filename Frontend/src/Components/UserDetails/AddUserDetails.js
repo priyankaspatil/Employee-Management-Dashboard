@@ -21,7 +21,9 @@ class UserDeatails extends React.Component {
         empBand: "",
         empImmRepManager: "",
         empRepManager: "",
-        empFunctionHead: ""
+        empFunctionHead: "",
+        empDesignation: "",
+        empTeam: ""
       }
   }
 
@@ -50,8 +52,9 @@ class UserDeatails extends React.Component {
     // console.log("In state ===>", this.state);
     // console.log("AddUserDetails props======>",this.props)
     let res = await axios.post("http://localhost:3007/adduserdetails", AddUserDetails);
-    let { data } = res.data;
+    let data = res.data;
     console.log(data)
+    { data === "Successful" ? this.props.history.push(ROUTES.HomePage, {AddUserDetails}) : console.log("Unsuccessful :(") }
     // axios({
     //   method: "POST",
     //   url: "http://localhost:3007/adduserdetails",
@@ -102,7 +105,7 @@ class UserDeatails extends React.Component {
             {/* <Button variant="contained" color="secondary" onClick={this.onCancel} className="btn">
               Cancel
             </Button> */}
-            <Alert /> 
+            <Alert props={this.props}/> 
           </Grid>
         </Grid>
       </Paper>

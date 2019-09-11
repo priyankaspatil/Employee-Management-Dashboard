@@ -1,0 +1,9 @@
+.home-page_paper-wrapper {
+  min-height: 895px;
+  margin: 20px;
+  box-shadow: -10px 13px 12px -13px rgba(0, 0, 0, 0.75) !important;
+  padding: 20px;
+}
+.home-page_paper-wrapper .home-page_grid-wrapper {
+  margin: 20px;
+}

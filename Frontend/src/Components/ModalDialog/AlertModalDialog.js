@@ -6,8 +6,9 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 // import DialogTitle from '@material-ui/core/DialogTitle';
 import './AlertModalDialog.css';
+import ROUTES from '../../helper/constants';
 
-export default function AlertDialog() {
+export default function AlertDialog(props) {
   const [open, setOpen] = React.useState(false);
 
   function handleClickOpen() {
@@ -16,6 +17,10 @@ export default function AlertDialog() {
 
   function handleClose() {
     setOpen(false);
+  }
+
+  function handleAgree() {
+    props.props.history.push(ROUTES.HomePage);
   }
 
   return (
@@ -37,10 +42,10 @@ export default function AlertDialog() {
           </DialogContentText>
         </DialogContent>
         <DialogActions className="alert-dialog_actions">
-          <Button onClick={handleClose} className="sec__btn">
+          <Button onClick={handleClose} color="primary" className="sec__btn">
             No
           </Button>
-          <Button onClick={handleClose} autoFocus className="btn">
+          <Button onClick={handleAgree} color="primary" autoFocus className="btn">
             Yes
           </Button>
         </DialogActions>
