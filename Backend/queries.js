@@ -121,20 +121,55 @@ const pool = new Pool({
 
 // EMPLOYEE DETAILS QUERIES
 
-//Add Employee details (empdetails table)
-const addEmpDetails = (request, response) => {
-  console.log("Adding employee details");
-  const { empName, empId, empDeskNo, empProject, empCostCenter, empUnit, empBand, empImmRepManager, empRepManager, empFunctionHead } = request.body
-  const query = "INSERT INTO empdetails ( empName, empId, empDeskNo, empProject, empCostCenter, empUnit, empBand, empImmRepManager, empRepManager, empFunctionHead) VALUES ( $1, $2, $3, $4, $5, $6, $7, $8, $9, $10 )"
-  const values = [ empName, empId, empDeskNo, empProject, empCostCenter, empUnit, empBand, empImmRepManager, empRepManager, empFunctionHead ]
+//Get all employee details
+const getEmpDetails = (request, response) => {
+  console.log("This is the getUserDetails function call");
+  const query = 'SELECT * FROM empdetails';
 
-  pool.query(query, values)
+  pool.query(query)
   .then(res => {
-    response.status(201).send("Successful")
+    console.log("UserDetails are ====>", res.rows);
+    response.status(200).send(res.rows);
   })
   .catch(e => {
     console.error(e.stack)
     response.send("Failed")
+  })
+  
+}
+
+//Get particular employee details for EmpCard
+const getEmpCardDetails = (request, response) => {
+  console.log("This is the getUserDetails function call");
+  const query = 'SELECT * FROM empdetails WHERE empdeskno = $1';
+  const values = [ empdeskno];
+
+  pool.query(query, values)
+  .then(res => {
+    console.log("UserDetails are ====>", res.rows);
+  })
+  .catch(e => {
+    console.error(e.stack)
+    response.send("Failed")
+  })
+  
+}
+
+//Add Employee details (empdetails table)
+const addEmpDetails = (request, response) => {
+  console.log("Adding employee details");
+  const { empName, empId, empDeskNo, empProject, empCostCenter, empUnit, empBand, empImmRepManager, empRepManager, empFunctionHead, empDesignation } = request.body
+  const query = "INSERT INTO empdetails ( empName, empId, empDeskNo, empProject, empCostCenter, empUnit, empBand, empImmRepManager, empRepManager, empFunctionHead, empDesignation) VALUES ( $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11 )"
+  const values = [ empName, empId, empDeskNo, empProject, empCostCenter, empUnit, empBand, empImmRepManager, empRepManager, empFunctionHead, empDesignation ]
+
+  pool.query(query, values)
+  .then(res => {
+    response.status(201).send("Successful");
+    console.log("Added Emp Details :", res.rows);
+  })
+  .catch(e => {
+    console.error(e.stack);
+    response.send("Failed");
   })
   
 }
@@ -187,5 +222,7 @@ const updateEmpDetails = (request, response) => {
     deleteUser,
     addEmpDetails,
     deleteEmpDetails,
-    updateEmpDetails
+    updateEmpDetails,
+    getEmpDetails,
+    getEmpCardDetails
   }

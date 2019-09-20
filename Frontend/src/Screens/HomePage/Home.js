@@ -3,6 +3,7 @@ import React from "react";
 import {  Paper, Grid } from "@material-ui/core";
 import EmpCard from "../../Components/EmpCard/EmpCard";
 import "./Home.css";
+import DeskArea from "../DeskAreaScree/DeskAreaScreen";
 
 const HomePage = (props) => {
   console.log("HOME PAGE PROPS====>", props.location.state);
@@ -10,7 +11,8 @@ const HomePage = (props) => {
       <Paper className="home-page_paper-wrapper">
         <Grid className="home-page_grid-wrapper">
           {/* <h1 className="home-page_title">Hi we are on home page :)</h1> */}
-          <EmpCard EmpCardDetails={props.location.state}/>
+          <DeskArea EmpCardDetails={props.location.state} />
+          {/* <EmpCard EmpCardDetails={props.location.state}/> */}
         </Grid>
       </Paper>
     );

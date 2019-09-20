@@ -32,6 +32,7 @@ app.put('/users/update/:username', db.updateUser);
 app.delete('/deleteusers', db.deleteUser);
 
 // Employee Details api
+app.get('/getuserdetails', db.getEmpDetails);
 app.post('/adduserdetails', db.addEmpDetails);
 app.delete('/deleteuserdetails', db.deleteEmpDetails);
 app.put('/updateuserdetails/:empId', db.updateEmpDetails);

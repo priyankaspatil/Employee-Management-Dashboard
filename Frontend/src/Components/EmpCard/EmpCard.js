@@ -14,22 +14,22 @@ export default function EmpCard(props) {
       </Grid>
       <Grid item xs className="emp-content--grid">
         <Typography gutterBottom variant="h5" component="h2" className="profile_name">
-          {props.EmpCardDetails.AddUserDetails.empName}
+          {props.EmpCardDetails.empName}
         </Typography>
         <Typography variant="body1" component="p" className="profile_designation">
-          Associate Software Developer
+          {props.EmpCardDetails.empDesignation}
         </Typography>
         <Typography variant="body2" component="p" className="profile_details">
-          <label className="profile_details-label">Emp ID: </label>{props.EmpCardDetails.AddUserDetails.empId}
+          <label className="profile_details-label">Emp ID: </label>{props.EmpCardDetails.empId}
         </Typography>
         <Typography variant="body2" component="p" className="profile_details">
-          <label className="profile_details-label">Cost Center: </label>{props.EmpCardDetails.AddUserDetails.empCostCenter}
+          <label className="profile_details-label">Cost Center: </label>{props.EmpCardDetails.empCostCenter}
         </Typography>
         <Typography variant="body2" component="p" className="profile_details">
-          <label className="profile_details-label">Department: </label>{props.EmpCardDetails.AddUserDetails.empUnit}
+          <label className="profile_details-label">Department: </label>{props.EmpCardDetails.empUnit}
         </Typography>
         <Typography variant="body2" component="p" className="profile_details">
-          <label className="profile_details-label">Team: </label>{props.EmpCardDetails.AddUserDetails.empDesignation}
+          <label className="profile_details-label">Team: </label>{props.EmpCardDetails.empTeam}
         </Typography>
       </Grid>
     </Paper>
