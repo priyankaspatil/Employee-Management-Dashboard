@@ -153,11 +153,12 @@ const addEmpDetails = (request, response) => {
 
   connection.query(query, values)
   .then(res => {
-    response.status(201).send("Successful")
+    response.status(201).send("Successful");
+    console.log("Added Emp Details :", res.rows);
   })
   .catch(e => {
-    console.error(e.stack)
-    response.send("Failed")
+    console.error(e.stack);
+    response.send("Failed");
   })
   
 }
@@ -203,5 +204,7 @@ const updateEmpDetails = (request, response) => {
     getEmpDetails,
     addEmpDetails,
     deleteEmpDetails,
-    updateEmpDetails
+    updateEmpDetails,
+    getEmpDetails,
+    getEmpCardDetails
   }
