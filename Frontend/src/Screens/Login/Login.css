@@ -7,15 +7,15 @@
   width: 100%;
   margin-bottom: 188px;
 }
-.login-container_wrapper .input-field_grid .username-grid {
+.login-container_wrapper .input-field_grid .email-grid {
   display: flex;
   flex-wrap: wrap;
 }
-.login-container_wrapper .input-field_grid .username-grid .input-field {
+.login-container_wrapper .input-field_grid .email-grid .input-field {
   width: 100%;
   margin-bottom: 15px;
 }
-.login-container_wrapper .input-field_grid .username-grid .err__text {
+.login-container_wrapper .input-field_grid .email-grid .err__text {
   color: red;
 }
 .login-container_wrapper .input-field_grid .password-grid {

@@ -12,6 +12,38 @@ const validateEmail = () => {
     });
 }
 
+validateUsername = e => {
+    let value = e.target.value;
+      this.setState({
+          value: value,
+          username: value
+      })
+      console.log("Username====>", this.state.username);
+      let regx = /^[a-z0-9_-]{3,16}$/;
+      if (regx.test(value) === false) {
+        this.setState({
+            showUsernameError: true,
+            usernameErrorMsg: 'Please add a valid username'
+        })
+      } else if (value.length < 3 || value.length > 16) {
+        this.setState({
+            showUsernameError: true,
+            usernameErrorMsg: "The username has to be greater than 3 and less than 16 characters."
+        })
+      }else if (value === null ) {
+        this.setState({
+            showUsernameError: false,
+            usernameErrorMsg: value
+        })
+      }
+      else {
+        this.setState({
+            showUsernameError: false,
+            usernameErrorMsg: 'value'
+        })
+      }
+  }
+
 const validatePassword = () => {
     const { password } = this.state;
     const regexPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%^&*()._*])(?=.{8,})/;

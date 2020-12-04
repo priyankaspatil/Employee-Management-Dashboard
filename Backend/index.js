@@ -32,9 +32,10 @@ app.put('/users/update/:username', db.updateUser);
 app.delete('/deleteusers', db.deleteUser);
 
 // Employee Details api
-app.post('/adduserdetails', db.addEmpDetails);
-app.delete('/deleteuserdetails', db.deleteEmpDetails);
-app.put('/updateuserdetails/:empId', db.updateEmpDetails);
+app.get('/empdetails', db.getEmpDetails);
+app.post('/addempdetails', db.addEmpDetails);
+app.delete('/deleteempdetails', db.deleteEmpDetails);
+app.put('/updateempdetails/:empId', db.updateEmpDetails);
 
 app.listen(port, () => {
     console.log(`App running on port ${port}.`)

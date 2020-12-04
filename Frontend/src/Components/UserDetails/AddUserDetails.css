@@ -1,5 +1,7 @@
 .add-user-grid-wrapper {
   width: 545px;
+  display: block;
+  margin: auto;
 }
 .add-user-grid-wrapper .add-user-details_grid-wrapper {
   flex: 0 0 700px;

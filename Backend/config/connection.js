@@ -1,11 +1,9 @@
 const connection = {
-    "label": "pegasus-dev",
-    "host": "35.192.221.231",
-    "user": "postgres",
-    "port": 5432,
-    "certPath": "",
-    "database": "test_dev",
-    "password": "postgres"
-  }
+  "user": "sql12379991",
+  "host": "sql12.freemysqlhosting.net",
+  "database": "sql12379991",
+  "password": "WXmakVjFeF",
+  "port": 3306,
+}
 
 module.exports = connection;

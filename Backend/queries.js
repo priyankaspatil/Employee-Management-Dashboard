@@ -1,21 +1,28 @@
-const Pool = require('pg').Pool;
-const pool = new Pool({
-    "user": "postgres",
-    "host": "35.192.221.231",
-    "database": "test_dev",
-    "password": "postgres",
-    "port": 5432,
+const mysql = require('mysql');
+
+const connection = mysql.createConnection({
+    "user": "sql12379991",
+    "host": "sql12.freemysqlhosting.net",
+    "database": "sql12379991",
+    "password": "WXmakVjFeF",
+    "port": 3306,
   });
 
+  connection.connect(function(err) {
+    if (err) {
+      return console.error('error: ' + err.message);
+    }
+  
+    console.log('Connected to the MySQL server.');
+  });
 
 // USER AUTHENTICATION QUERIES
-// (register table)
   //GET all users
   const getUsers = (request, response) => {
     console.log("This is the getUsers function call");
-    const query = 'SELECT * FROM register';
+    const query = 'SELECT * FROM userdetails';
   
-    pool.query(query, (error, results) => {
+    connection.query(query, (error, results) => {
       if (error) {
         throw error
       }
@@ -27,12 +34,12 @@ const pool = new Pool({
   const checkUser = (request, response) => {
     // const id = parseInt(request.params.id)
     console.log('checking user!!')
-    const { username, password } = request.body
-    const query = "SELECT * FROM register WHERE username = $1 AND password = $2";
-    const values = [ username, password ];
+    const { email, password } = request.body
+    const query = "SELECT * FROM userdetails WHERE email = $1 AND password = $2";
+    const values = [ email, password ];
   
     //promises
-    pool.query(query, values)
+    connection.query(query, values)
     .then(res => {
       // console.log("checking the data====>",res.rows[0]);
       // console.log("checking values====>",values);
@@ -48,26 +55,23 @@ const pool = new Pool({
     .catch(e => console.error(e.stack))
 
     //callback
-    // pool.query(query, values, (error, results) => {
+    // connection.query(query, values, (error, results) => {
     //   if (error) {
     //     console.log(error);
     //   }
     //   response.status(200).json(results.rows)
-    //   // response.send("Logged In successfully! from database:)")
+    //   // response.send("Logged In successfully!\")
     // })
-
-    // console.log("This is response====>",response.statusCode);
-
   }
 
   //Create a new user. [POST a new user] 
   const createUser = (request, response) => {
     console.log("Creating a new user!");
-    const { firstname, lastname, email, username, password } = request.body
-    const query = "INSERT INTO register ( firstname, lastname, email, username, password) VALUES ( $1, $2, $3, $4, $5 )"
-    const values = [ firstname, lastname, email, username, password ]
+    const { firstname, lastname, email, address, password, dob, company } = request.body
+    const query = "INSERT INTO userdetails ( firstname, lastname, email, address, password, dob, company) VALUES ( $1, $2, $3, $4, $5, $6, $7 )"
+    const values = [ firstname, lastname, email, address, password, dob, company ]
   
-    pool.query(query, values)
+    connection.query(query, values)
     .then(res => {
       response.status(201).send("Successful")
     })
@@ -78,17 +82,17 @@ const pool = new Pool({
   //Update the user details. [PUT updated data in an existing user]
   const updateUser = (request, response) => {
     // const id = parseInt(request.params.id)
-    const username = request.params.username
+    const email = request.params.email
     console.log("Updating the user details!");
-    const { firstname, lastname, email, password } = request.body
-    const query = 'UPDATE register SET firstname = $1, lastname = $2, email = $3, password = $4 WHERE username = $5'
-    const values = [firstname, lastname, email, password, username]
+    const { firstname, lastname, email, address, password, dob, company } = request.body
+    const query = 'UPDATE userdetails SET firstname = $1, lastname = $2, address = $3, password = $4, dob = $5, company = $6 WHERE email = $7'
+    const values = [firstname, lastname, address, password, dob, company, email]
   
-    pool.query( query, values, (error, results) => {
+    connection.query( query, values, (error, results) => {
         if (error) {
           throw error
         }
-        response.status(200).send(`User modified with username: ${username}`)
+        response.status(200).send(`User modified with email: ${email}`)
       }
     )
   }
@@ -98,10 +102,10 @@ const pool = new Pool({
     const {email} = request.body
     console.log(`Deleting the user ${email}`)
     // const { firstname, lastname, email, password } = request.body
-    const query = 'DELETE FROM register WHERE email = $1'
+    const query = 'DELETE FROM userdetails WHERE email = $1'
     const values = [ email]
 
-    pool.query(query, values)
+    connection.query(query, values)
     .then(results => {
       // console.log("Delete results==>", results)
       if(results.rowCount == 1){
@@ -121,14 +125,33 @@ const pool = new Pool({
 
 // EMPLOYEE DETAILS QUERIES
 
+//GET all employees
+const getEmpDetails = (request, response) => {
+  console.log("This is the getUsers function call");
+  const query = 'SELECT * FROM empdetails';
+
+  connection.query(query, values)
+  .then(res => {
+    if(res.rows[0] == undefined){
+      response.send("Failed to fetch")
+      console.log("Failed to fetch data")
+    }
+    else {
+      response.send(res.rows)
+      console.log("Successfully fteched data")
+    }
+  })
+  .catch(e => console.error(e.stack))
+}
+
 //Add Employee details (empdetails table)
 const addEmpDetails = (request, response) => {
   console.log("Adding employee details");
-  const { empName, empId, empDeskNo, empProject, empCostCenter, empUnit, empBand, empImmRepManager, empRepManager, empFunctionHead } = request.body
-  const query = "INSERT INTO empdetails ( empName, empId, empDeskNo, empProject, empCostCenter, empUnit, empBand, empImmRepManager, empRepManager, empFunctionHead) VALUES ( $1, $2, $3, $4, $5, $6, $7, $8, $9, $10 )"
-  const values = [ empName, empId, empDeskNo, empProject, empCostCenter, empUnit, empBand, empImmRepManager, empRepManager, empFunctionHead ]
+  const { firstname, lastname, email, company, city, empdob, address, mobile  } = request.body
+  const query = "INSERT INTO empdetails ( firstname, lastname, email, company, city, empdob, address, mobile ) VALUES ( $1, $2, $3, $4, $5, $6, $7, $8 )"
+  const values = [ firstname, lastname, email, company, city, empdob, address, mobile ]
 
-  pool.query(query, values)
+  connection.query(query, values)
   .then(res => {
     response.status(201).send("Successful")
   })
@@ -141,17 +164,17 @@ const addEmpDetails = (request, response) => {
 
 //Update the employee details. [PUT updated data in an existing user]
 const updateEmpDetails = (request, response) => {
-  const id = request.params.empId
-  // console.log("Updating the user details!");
+  const id = request.params.id
+  console.log("Updating the employee details!");
   // console.log("Checking the request body====>",request.body);
   // console.log("Checking the request params====>",id);
-  const { empName, empId, empDeskNo, empProject, empCostCenter, empUnit, empBand, empImmRepManager, empRepManager, empFunctionHead } = request.body
-  const query = "UPDATE empdetails SET empName = $1, empDeskNo = $2, empProject = $3, empCostCenter = $4, empUnit = $5, empBand = $6, empImmRepManager = $7, empRepManager = $8, empFunctionHead = $9 WHERE empId = $10"
-  const values = [ empName, empDeskNo, empProject, empCostCenter, empUnit, empBand, empImmRepManager, empRepManager, empFunctionHead, id ]
+  const { firstname, lastname, email, company, city, empdob, address, mobile } = request.body
+  const query = "UPDATE empdetails SET firstname = $1, lastname = $2, email = $3, company = $4, city = $5, empdob = $6, address = $7, mobile = $8 WHERE id = $10"
+  const values = [ firstname, lastname, email, company, city, empdob, address, mobile, id ]
 
-  pool.query( query, values)
+  connection.query( query, values)
   .then(res => {
-    response.status(201).send(`Successfully ${id} details updated`)
+    response.status(201).send(`Successfully updated ${id} details.`)
   })
   .catch(e => console.error(e.stack))
 }
@@ -159,20 +182,12 @@ const updateEmpDetails = (request, response) => {
 //Delete employee details
   const deleteEmpDetails = (request, response) => {
     // const id = parseInt(request.params.id)
-  
-    // pool.query('DELETE FROM users WHERE id = $1', [id], (error, results) => {
-    //   if (error) {
-    //     throw error
-    //   }
-    //   response.status(200).send(`User deleted with ID: ${id}`)
-    // })
-
     console.log("Deleting employee details");
-    const { empId } = request.body
-    const query = "DELETE FROM empdetails WHERE empId = $1"
-    const values = [ empId ]
+    const { id } = request.body
+    const query = "DELETE FROM empdetails WHERE id = $1"
+    const values = [ id ]
 
-    pool.query(query, values)
+    connection.query(query, values)
     .then(res => {
       response.status(201).send("Successful")
     })
@@ -185,6 +200,7 @@ const updateEmpDetails = (request, response) => {
     createUser,
     updateUser,
     deleteUser,
+    getEmpDetails,
     addEmpDetails,
     deleteEmpDetails,
     updateEmpDetails

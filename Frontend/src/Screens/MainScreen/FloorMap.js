@@ -20,7 +20,6 @@ showAddDetailsComp = (data) => {
   this.setState({
     showAddEmpDetails: data
   })
-  console.log("In Parent Component showAddDetailsComp===>",this.state.showAddEmpDetails)
 }
 
 render(){
@@ -43,18 +42,5 @@ render(){
     );
   }
 }
-
-// const FloorMapPage = (props) => {
-//     return (
-//       <Paper className="floor-map_paper-wrapper">
-//         <Grid container className="floor-map_grid-wrapper">
-//           <img src={FloorMapImg} alt={FloorMapImg} className="floor-map_img"/>
-//           <Grid item xs className="floor-map_grid-container">
-//             {this.state.showAddEmpDetails ? <AddUserDetails/> :<MainScreen showAddDetailsComp={this.showAddDetailsComp}/>}
-//           </Grid>
-//         </Grid>
-//       </Paper>
-//     );
-// }
 
 export default FloorMapPage;

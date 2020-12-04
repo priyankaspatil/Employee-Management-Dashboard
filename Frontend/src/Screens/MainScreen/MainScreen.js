@@ -45,7 +45,7 @@ const useStyles = makeStyles(theme => ({
   root: {
     backgroundColor: theme.palette.background.paper,
     width: 400,
-    height: 455,
+    height: 700,
     right: 70,
     top: 70,
     position: 'absolute',
@@ -81,8 +81,8 @@ export default function MainScreenTabs(props) {
           variant="fullWidth"
           aria-label="full width tabs example"
         >
-          <Tab label="LOGIN" {...a11yProps(0)} />
           <Tab label="REGISTER" {...a11yProps(1)} />
+          <Tab label="LOGIN" {...a11yProps(0)} />
         </Tabs>
       </AppBar>
       <SwipeableViews
@@ -91,10 +91,10 @@ export default function MainScreenTabs(props) {
         onChangeIndex={handleChangeIndex}
       >
         <TabPanel value={value} index={0} dir={theme.direction}>
-          <Login props={props}/>
+          <Register props={props} handleChange={handleChange} />
         </TabPanel>
         <TabPanel value={value} index={1} dir={theme.direction}>
-          <Register props={props}/>
+          <Login props={props}/>
         </TabPanel>
       </SwipeableViews>
     </Paper>
