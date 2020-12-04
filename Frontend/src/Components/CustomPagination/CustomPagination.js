@@ -18,6 +18,7 @@ const CustomPagination = props => {
 };
 
 const ListItem = props => {
+  let listItems = [];
   let PAGERDATA = Object.assign({}, props, {
     PAGEINDEX: Number(props.PAGEINDEX || 1),
     PAGESIZE: Number(props.PAGESIZE || 5),
@@ -32,7 +33,6 @@ const ListItem = props => {
       : PAGERDATA.PAGERCOUNT;
   PAGERDATA.TOTALPAGE = Math.ceil(props.TOTALRECORD / props.PAGESIZE);
 
-  var listItems = [];
   listItems.push(
     <li className="custom--pagination__li">
       <span className="CustomPaginationText">

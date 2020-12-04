@@ -34,10 +34,11 @@ class Login extends React.Component {
     console.log("user pwd", password);
     let encryptedPwd = cryptr.encrypt(password);
     let existingUsers = [];
-    const userDetails = {
+    let userDetails = {
       email,
       encryptedPwd
     };
+    console.log(userDetails);
 
     //api for fetching existing users
     // let res = await axios.post("http://localhost:3007/users", userDetails);

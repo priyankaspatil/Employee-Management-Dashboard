@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Login from './Screens/Login/Login';
 import SignUp from './Screens/Register/Register';
 import FloorMap from './Screens/MainScreen/FloorMap';
@@ -11,7 +11,7 @@ import './index.css';
 const ViewPage = (props) => {
   return (
     <div className="ViewPage">
-      <div>
+      <Switch>
         <Route
           path="/"
           render={routeProps => (
@@ -45,7 +45,7 @@ const ViewPage = (props) => {
           )}
           exact
         />
-      </div>
+      </Switch>
     </div>
   );
 }

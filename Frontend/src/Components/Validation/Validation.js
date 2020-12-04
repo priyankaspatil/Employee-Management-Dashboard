@@ -12,7 +12,7 @@ const validateEmail = () => {
     });
 }
 
-validateUsername = e => {
+const validateUsername = e => {
     let value = e.target.value;
       this.setState({
           value: value,
@@ -58,53 +58,9 @@ const validatePassword = () => {
     });
 }
 
-// onBackButtonEvent = (event) => {
-//     event.preventDefault();
-// }
-
-// handleChangeEmail = (event) => {
-//     this.setState({ email: event.target.value }, () => {
-//         this.validateEmail();
-//     });
-// }
-
-// handleChangePassword = (password) => {
-//     this.setState({ password }, () => {
-//         this.validatePassword();
-//     });
-// }
-
-// gotoForgotPassword = () => {
-//     // eslint-disable-next-line
-//     this.props.history.push('/forgotPassword');
-// }
-
-// login = () => {
-//     const { email, password, deviceId, emailStatus, passwordStatus } = this.state;
-//     if (emailStatus && passwordStatus) {
-//         // event.preventDefault();
-//         const user = { email, password, deviceId };
-//         // eslint-disable-next-line
-//         this.props.loginRequest(user);
-//     }
-// }
-
-// check = () => {
-//     const { email, password } = this.state;
-//     if (email && password) {
-//         this.setState({ buttonEnabled: true, color: 'background' });
-//     } else {
-//         this.setState({ buttonEnabled: false, color: '' });
-//     }
-// }
-
-// _handleKeyPress=(e) => {
-//     if (e.key === 'Enter') {
-//         this.login();
-//     }
-// };
 
 module.exports = {
     validateEmail,
-    validatePassword
+    validatePassword,
+    validateUsername
   }
